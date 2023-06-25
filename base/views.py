@@ -5,7 +5,7 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login, logout
 from .models import Message, Room, Topic,User
-from .forms import RoomForm, UserForm, MyUserCreationForm, TopicForm
+from .forms import RoomForm, UserForm, MyUserCreationForm
 # Create your views here.
 from django.contrib.auth.signals import user_logged_in, user_logged_out
 from django.dispatch import receiver    
@@ -78,6 +78,7 @@ def home(request):
         Q(description__icontains=q)
     )
     room_count = rooms.count()
+
     topics = Topic.objects.all()
     topics_first_five = topics[0:5]
     room_messages = Message.objects.filter(
@@ -206,41 +207,6 @@ def topicsPage(request):
 
     q = request.GET.get('q') if request.GET.get('q') != None else ''
     topics = Topic.objects.filter(name__icontains=q)
-    # topics.is_active=True
-    # topics.save()
-    # .update(is_active=True)
-    #
- 
-#  Client.objects.filter(pk=pk).update(status='active')
-
-
-    # make sure user is exit
-    # try:
-    #     topic = Topic.objects.get(id=q)
-    #     topic.is_active = True
-    #     topic.save()
-    # except:
-    #     messages.error(request, "")
-
-  
-
-    # form = TopicForm(instance=topic)
-    
-
-
-    # if request.method == 'POST':
-        # form = TopicForm(request.POST, instance=topic)
-
-        # topic.is_active = True
-        # topic.save()
-          # topic.is_active = True
-    # if form.is_valid():
-    #    topic.save()
-    # 
-    # topic.save()
-  
-  
-
     return render(request, 'base/topics.html', {'topics': topics})
 
 

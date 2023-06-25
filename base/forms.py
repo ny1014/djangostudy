@@ -2,7 +2,7 @@ from django.forms import ModelForm
 from django.contrib.auth.forms import UserCreationForm
 
 from platformdirs import user_cache_dir
-from .models import Room,User
+from .models import Room,User,Topic
 
 class MyUserCreationForm(UserCreationForm):
     class Meta:
@@ -24,4 +24,8 @@ class UserForm(ModelForm):
         model = User
         fields = ['avatar','name','username','email','bio']
       
-     
+
+class TopicForm(ModelForm):
+    class Meta:
+        model = Topic
+        fields ='__all__'

@@ -584,6 +584,8 @@ a {
   color: var(--color-main);
 }
 
+ 
+
 .topics__list li a span {
   padding: 0.5rem 1rem;
   background-color: var(--color-dark);
@@ -1162,4 +1164,8 @@ a {
   font-weight: 500;
   color: var(--color-main);
   font-weight: 1.4rem;
+}
+
+#topic_active{
+  color: #5dd693;
 }
